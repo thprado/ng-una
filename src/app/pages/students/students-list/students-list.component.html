@@ -1,1 +1,26 @@
-<p>students-list works!</p>
+<nav class="mb-5 mt-1">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a [routerLink]="'/'">Home</a>
+    </li>
+    <li class="breadcrumb-item">
+        <a>
+            Estudantes
+        </a>
+    </li>
+  </ol>
+</nav>
+
+<div class="row mb-4">
+    <div class="col-md-9">
+        <h1 class="border-left pl-2">
+            Estudantes
+        </h1>
+    </div>
+    <div class="col-md-3">
+        <a [routerLink]="'new'" class="btn btn-success float-right">
+            + Novo Estudante
+        </a>
+    </div>
+</div>
+
