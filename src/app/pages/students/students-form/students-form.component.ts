@@ -124,5 +124,4 @@ export class StudentsFormComponent implements OnInit, AfterContentChecked {
 
 		this.submittingForm = false;
 	}
-
 }

@@ -28,4 +28,10 @@ export class StudentsService {
 
     return this.http.put<any>(url, student);
   }
+
+  delete(id: number): Observable<any> {
+    const url = `${this.apiPath}/${id}`;
+
+    return this.http.delete<any>(url);
+  }
 }
