@@ -22,4 +22,10 @@ export class StudentsService {
 
     return this.http.get<any>(url);
   }
+
+  update(student: Student): Observable<Student> {
+    const url = `${this.apiPath}/${student.id}`;
+
+    return this.http.put<any>(url, student);
+  }
 }
