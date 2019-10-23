@@ -40,6 +40,7 @@ export class StudentsFormComponent implements OnInit, AfterContentChecked {
 	ngOnInit() {
 		this.buildStudentForm();
 		this.setCurrentAction();
+		this.loadStudent();
 	}
 
 	private setCurrentAction() {
@@ -69,6 +70,18 @@ export class StudentsFormComponent implements OnInit, AfterContentChecked {
 		} else {
 			const studentName = this.student.name || '';
 			this.pageTitle = 'Editando Estudante: ' + studentName;
+		}
+	}
+
+	private loadStudent() {
+		if (this.currenctAction == 'edit') {
+			this.studentService.getById(1).subscribe(
+				(student) => {
+					this.student = student;
+					this.studentForm.patchValue(this.student);
+				},
+				(error) => alert('Ocorreu um erro no servidor, tente mais tarde')
+			);
 		}
 	}
 
