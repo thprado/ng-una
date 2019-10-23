@@ -60,10 +60,23 @@ export class StudentsFormComponent implements OnInit, AfterContentChecked {
 	submitForm() {
 		this.submittingForm = true;
 		if (this.currenctAction == 'new') {
-			
+			this.createStudent();
 		} else {
 			this.updateStudent();
 		}
+	}
+
+	private createStudent() {
+		const student: Student = Object.assign(new Student(), this.studentForm.value);
+
+		this.studentService.create(student).subscribe(
+			(student) => {
+				this.actionsFormSuccess(student)
+			},
+			(error) => {
+				this.actionsForError(error)
+			}
+		);
 	}
 
 
@@ -86,7 +99,7 @@ export class StudentsFormComponent implements OnInit, AfterContentChecked {
 
 	private loadStudent() {
 		if (this.currenctAction == 'edit') {
-			this.studentService.getById(1).subscribe(
+			this.studentService.getById(Number(this.route.snapshot.paramMap.get('id'))).subscribe(
 				(student) => {
 					this.student = student;
 					this.studentForm.patchValue(this.student);

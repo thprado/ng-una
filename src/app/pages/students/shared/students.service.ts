@@ -34,4 +34,8 @@ export class StudentsService {
 
     return this.http.delete<any>(url);
   }
+
+  create(student: Student): Observable<Student> {
+    return this.http.post<any>(this.apiPath, student);
+  }
 }
