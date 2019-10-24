@@ -34,5 +34,26 @@ E aqui está o nosso módulo de estudantes:
 
 !["Módulo de estudantes"](https://i.imgur.com/1kALDuf.jpg)
 
+Agora vamos gerar o módulo da página home:
+
+```
+ng generate module pages/home --routing
+```
+
+!["Módulo Home"](https://i.imgur.com/EDX8oF8.jpg)
+
+
+E agora iremos gerar o componente da home:
+
+```
+ng generate component pages/home --skipTests=true
+```
+
+!["Componente Home"](https://i.imgur.com/bMCa2ik.jpg)
+
+
+
+
+
 
 
