@@ -85,7 +85,7 @@ Agora devemos colocar um corpo no nosso navbar, então devemos usar o seguinte t
    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" [routerLink]="'/students'">Estudantes</a>
             </li>
         </ul>
