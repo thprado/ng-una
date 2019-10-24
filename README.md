@@ -51,6 +51,18 @@ ng generate component pages/home --skipTests=true
 
 !["Componente Home"](https://i.imgur.com/bMCa2ik.jpg)
 
+Agora pessoal, lembra do Navbar que criamos, agora precisamos utilizar ele na aplicação, então inicialmente precisamo exportá-lo:
+
+!["Exportando navbar"](https://i.imgur.com/RCTXzjz.jpg)
+
+E agora é só importarmos o Shared Module no AppModule:
+
+!["Importando Shared Module"](https://i.imgur.com/eykh4EU.jpg)
+
+
+
+
+
 
 
 
