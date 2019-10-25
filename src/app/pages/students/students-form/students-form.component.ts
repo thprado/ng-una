@@ -4,11 +4,10 @@ import { Student } from '../shared/student.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from '../shared/students.service';
 
-import toastr from 'toastr';
 @Component({
   selector: 'app-students-form',
   templateUrl: './students-form.component.html',
-  styleUrls: ['./students-form.component.scss']
+  styleUrls: ['./students-form.component.css']
 })
 export class StudentsFormComponent implements OnInit, AfterContentChecked {
 
@@ -17,21 +16,7 @@ export class StudentsFormComponent implements OnInit, AfterContentChecked {
 	pageTitle:        string;
 	serverErrorMessages: string[] = null;
 	submittingForm: boolean = false;
-	student: Student = new Student();
-
-	ptBR = {
-		firstDayOfWeek: 0,
-		dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-		dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
-		dayNamesMin: ['Do', 'Se', 'Te', 'Qu', 'Qu', 'Se', 'Sa'],
-		monthNames: [
-			'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
-			'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
-		],
-		monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-		today: 'Hoje',
-		clear: 'Limpar'
-	};
+  student: Student = new Student();
   
 	constructor(
 		private studentService: StudentsService,
@@ -42,7 +27,7 @@ export class StudentsFormComponent implements OnInit, AfterContentChecked {
 	ngOnInit() {
 		this.buildStudentForm();
 		this.setCurrentAction();
-		this.loadStudent();
+    this.loadStudent();
 	}
 
 	private setCurrentAction() {
@@ -79,12 +64,11 @@ export class StudentsFormComponent implements OnInit, AfterContentChecked {
 		);
 	}
 
-
 	private buildStudentForm() {
 		this.studentForm = this.formBuilder.group({
 			id: [null],
 			name: [null, [Validators.required, Validators.minLength(2)]],
-			birth: [null]
+			course: [null,  [Validators.required, Validators.minLength(2)]]
 		})
 	}
 
@@ -123,7 +107,7 @@ export class StudentsFormComponent implements OnInit, AfterContentChecked {
 	}
 
 	private actionsFormSuccess(student: Student) {
-		toastr.success('Solicitação processada com sucesso.');
+		alert('Solicitação processada com sucesso.');
 
 		this.router.navigateByUrl('students', { skipLocationChange: true }).then(
 			() => {
@@ -133,7 +117,7 @@ export class StudentsFormComponent implements OnInit, AfterContentChecked {
 	}
 
 	private actionsForError(error) {
-		toastr.error('Ocorreu um erro ao processar a sua solicitação.');
+		alert('Ocorreu um erro ao processar a sua solicitação.');
 
 		this.submittingForm = false;
 	}
