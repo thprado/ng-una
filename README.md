@@ -178,43 +178,6 @@ E na rotas rotas de estudantes:
 !["Students Form Works"](https://i.imgur.com/pJyq09u.jpg)
 
 
-Agora vamos utilizar o AngularInMemoryWebApi, executem o seguinte comando:
-
-```
-npm i angular-in-memory-web-api --save
-```
-
-Após o termino do comando, insiram o seguinte trecho no "app.module.ts":
-
-```
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
-import { InMemoryDatabase } from "./in-memory-database";
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-      AppRoutingModule,
-      SharedModule,
-      BrowserAnimationsModule,
-      HttpClientModule,
-      HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase)
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-```
-
 Agora vamos criar um model pra representar nosso estudante:
 
 Na pasta "pages/students" criem uma pasta chamada "shared" e criem um arquivo chamado "student.model.ts":
@@ -275,6 +238,43 @@ export class StudentsService {
     return this.http.post<any>(this.apiPath, student);
   }
 }
+```
+
+Agora vamos utilizar o AngularInMemoryWebApi, executem o seguinte comando:
+
+```
+npm i angular-in-memory-web-api --save
+```
+
+Após o termino do comando, insiram o seguinte trecho no "app.module.ts":
+
+```
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
+import { HttpClientInMemoryWebApiModule } from "angular-in-memory-web-api";
+import { InMemoryDatabase } from "./in-memory-database";
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+      AppRoutingModule,
+      SharedModule,
+      BrowserAnimationsModule,
+      HttpClientModule,
+      HttpClientInMemoryWebApiModule.forRoot(InMemoryDatabase)
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 Agora vamos criar nosso banco de dados, criem um arquivo na raiz do projeto com o nome "in-memory-database.ts", com o seguinte trecho: 
